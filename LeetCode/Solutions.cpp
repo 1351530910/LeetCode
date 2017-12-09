@@ -51,3 +51,31 @@ ListNode* addTwoNumbers(ListNode* l1, ListNode* l2) {
 		}
 	}
 }
+
+int lengthOfLongestSubstring(string s) {
+	const char *arr = s.c_str();
+
+	int length = 0;
+	int i = 0;
+	int j = 0;
+	while (arr[i])
+	{
+		bool letter[256] = {};
+		j = i;
+		while (arr[j])
+		{
+			if (letter[arr[j]])
+			{
+				break;
+			}
+			else
+			{
+				letter[arr[j]] = true;
+				j++;
+				length = fmax(j - i, length);
+			}
+		}
+		i++;
+	}
+	return length;
+}
